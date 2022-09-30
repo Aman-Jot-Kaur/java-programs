@@ -1,0 +1,84 @@
+//name your class as hcf.java
+//these are three methods we can use to find hcf of two numbers
+import java.util.Scanner;
+import java.lang.Math;
+class calc{
+    void factorisation_method(int a,int b){
+        int c=Math.max(a,b);
+        int ans=0;
+        for(int i=1;i<=c;i++){
+            if(a%i==0 && b%i==0){
+                ans=i;
+            }
+        }
+        System.out.println(ans);
+    }
+    void by_dividing_two(int a,int b){
+        int rem=1,ans=0;
+        while(rem!=0){
+            rem=a%b;
+            a=b;
+
+            ans=b;
+            b=rem;
+        }
+        System.out.println(ans);
+    }
+    void all_factors(int a){
+        System.out.println("factors of "+a+" ");
+        for(int i=1;i<=a;i++){
+            if(a%i==0){
+                System.out.println(i+" ");
+            }
+        }
+    }
+    void common_prime_factors(int a,int b){
+        int arr1[]=new int[100];
+        int arr2[]=new int[100];
+        int p=0,r=0,ans=1;
+        for(int i=2;i<=a;i++){
+           while(a%i==0){
+               arr1[p++]=i;
+               a=a/i;
+           }
+        }
+
+        for(int i=2;i<=b;i++){
+            while(b%i==0){
+                arr2[r++]=i;
+                b=b/i;
+            }
+        }
+        for(int i=0;i<p;i++){
+            for(int j=0;j<r;j++){
+                if(arr1[i]==arr2[j]){
+                    ans*=arr1[i];
+                    i++;
+                    j++;
+                }
+            }
+        }
+        System.out.println(ans);
+    }
+
+}
+
+public class hcf {
+    public static void main(String[] args) {
+        int a,b;
+        Scanner sc=new Scanner(System.in);
+        a=sc.nextInt();
+        b=sc.nextInt();
+        calc obj=new calc();
+        obj.all_factors(b);
+        obj.all_factors(a);
+        System.out.println("through factorization hcf: ");
+        obj.factorisation_method(a,b);
+        System.out.println("through dividing two num hcf: ");
+        obj.by_dividing_two(a,b);
+        System.out.println("through common prime factors hcf: ");
+        obj.common_prime_factors(a,b);
+
+    }
+
+}
