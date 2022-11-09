@@ -1,0 +1,75 @@
+package MyPackage;
+
+import java.util.Scanner;
+
+class menu{
+    int row=0,col=0;
+    String[][] data=new String[10][2];
+    public void register(){
+        System.out.println("enter name and then password");
+        Scanner sc=new Scanner(System.in);
+        String name=sc.next();
+        String pass=sc.next();
+        data[row][0]=name;
+        data[row][1]=pass;
+        row++;
+    }
+    public void log(){
+        System.out.println("enter name and then password");
+        Scanner sc=new Scanner(System.in);
+        String name=sc.next();
+        String pass=sc.next();
+        int chk=0;
+        for(int i=0;i<=row;i++){
+            if(name.equals(data[i][0]) && pass.equals(data[i][1])){
+                chk=1;
+            }
+        }
+        if(chk==1){
+            System.out.println("loginned");
+        }
+        else{
+            System.out.println("invalid name or password");
+        }
+    }
+    public void changepassword(){
+
+        System.out.println("enter name");
+        Scanner sc=new Scanner(System.in);
+        String name=sc.next();
+        for(int i=0;i<=row;i++){
+            if(name.equals(data[i][0])){
+                System.out.println("enter new password");
+                String pass=sc.next();
+                data[i][1]=pass;
+            }
+        }
+        System.out.println("password changed");
+    }
+}
+public class login {
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        int n=0;
+        menu m=new menu();
+        System.out.println("enter 1 to register,2 to login, 3 to change password and 4 to exit program");
+        while(n!=4){
+
+            n=sc.nextInt();
+            if(n==1){
+                m.register();
+            }
+            if(n==2){
+                m.log();
+            }
+            if(n==3){
+                m.log();
+                m.changepassword();
+            }
+            if(n!=4)
+            System.out.println("enter 1 to register,2 to login, 3 to change password and 4 to exit program");
+
+        }
+        System.out.println("program finished");
+    }
+}
