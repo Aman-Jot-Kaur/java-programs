@@ -1,0 +1,52 @@
+package MyPackage;
+
+import java.util.*;
+class BubbleSort{
+   private int i,j;
+   private int arr[];
+   public BubbleSort(int num[]){
+       arr=num;
+
+   }
+   public void sort(){
+      boolean check=true;
+      for(i=0;i<arr.length-1;i++){
+         check=true;
+         for(j=0;j<arr.length-1-i;j++){
+
+            if(arr[j]>arr[j+1]){
+               check=false;
+               int temp=arr[j];
+               arr[j]=arr[j+1];
+               arr[j+1]=temp;
+            }
+
+         }
+         if(check){
+            break;
+         }
+      }
+   }
+   public void display(){
+      for(int i=0;i<arr.length;i++){
+         System.out.print(arr[i]+" ");
+      }
+      System.out.println();
+   }
+}
+public class bsort {
+   public static void main(String[] args) {
+      System.out.println("enter length and elements");
+      Scanner sc=new Scanner(System.in);
+      int n=sc.nextInt();
+
+     int arr[]=new int[n];
+     for(int i=0;i<n;i++){
+        arr[i]= sc.nextInt();
+     }
+      BubbleSort obj=new BubbleSort(arr);
+     obj.sort();
+     obj.display();
+   }
+
+}
