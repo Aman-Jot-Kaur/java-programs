@@ -1,0 +1,44 @@
+package MyPackage;
+
+import java.util.Scanner;
+
+class Bsearch{
+    private int arr[];
+    public Bsearch(int num[]){
+        arr=num;
+    }
+    public void search(int n){
+        int left=0,right=arr.length-1;
+        while(left<=right){
+            int mid=left+(right-left)/2;//done to handle the overflow of numbers
+            if(arr[mid]==n){
+                System.out.println("found at index "+mid);
+                return;
+            }
+            else if(arr[mid]>n){
+                right=mid-1;
+            }
+            else{
+                left=mid+1;
+            }
+        }
+        System.out.println("sorry element not found");
+    }
+
+}
+public class binarysearch {
+    public static void main(String[] args) {
+        System.out.println("enter length and elements");
+        Scanner sc=new Scanner(System.in);
+        int n=sc.nextInt();
+
+        int arr[]=new int[n];
+        for(int i=0;i<n;i++){
+            arr[i]= sc.nextInt();
+        }
+        System.out.println("enter element to search");
+        int c=sc.nextInt();
+        Bsearch obj=new Bsearch(arr);
+        obj.search(c);
+    }
+}
